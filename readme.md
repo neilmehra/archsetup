@@ -51,15 +51,20 @@ arch-chroot /mnt
 ```
 ln -sf /usr/share/zoneinfo/US/Eastern /etc/localtime
 hwclock --systohc
+pacman -Sy neovim
 ```
-
-`pacman -Sy neovim`
 
 Edit /etc/locale.gen and uncomment en_US.UTF-8 UTF-8.
 
-Generate locale: `locale-gen`
+Generate locale: 
+```
+locale-gen
+```
 
-Create /etc/locale.conf and set LANG: `LANG=en_US.UTF-8`
+Create /etc/locale.conf and write the following line:
+```
+LANG=en_US.UTF-8
+```
 
 Edit /etc/hostname, and write name of machine on network
 
@@ -126,7 +131,9 @@ nmcli d wifi connect WIFI_SSID_HERE password --YOUR_PASSWORD_HERE
 ```
 
 ### yay
-`pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si`
+```
+pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+```
 
 ### zsh
 ```
@@ -143,7 +150,9 @@ yay -S --needed - < ./packages/fonts
 ```
 
 ### Enable TRIM for SSD's
-`systemctl enable fstrim.timer`
+```
+systemctl enable fstrim.timer
+```
 
 ### Configure pacman
 Refer to `/etc/pacman.conf`
@@ -166,9 +175,12 @@ ParallelDownloads = 5
 ```
 
 ### Set up dotfiles
-Clone `https://github.com/asiankoala/dotfiles`
-Run `bombadil install` inside of ~/dotfiles/
-Run `bombadil link -p bspwm`
+```
+git clone https://github.com/asiankoala/dotfiles
+cd dotfiles
+bombadil install
+bombadil link -p bspwm
+```
 
 
 ### Configure zsh
