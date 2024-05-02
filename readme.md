@@ -1,10 +1,10 @@
 # Pre install
-make partition on windows
-disable secure boot (bios)
-disable fast startup (ctrl panel -> power options -> faststartup)
-disable hibernation (powercfg.exe /hibernate off)
-download arch iso from mirror
-boot into live environment
+- make partition on windows
+- disable secure boot (bios)
+- disable fast startup (ctrl panel -> power options -> faststartup)
+- disable hibernation (powercfg.exe /hibernate off)
+- download arch iso from mirror
+- boot into live environment
 
 # Install
 
@@ -17,27 +17,27 @@ station wlan0 get-networks
 station wlan0 connect test
 ```
 or
-`iwctl --passphrase NETWORK-PASSWORD station DEVICE-NAME connect NETWORK-NAME`
+```
+iwctl --passphrase NETWORK-PASSWORD station DEVICE-NAME connect NETWORK-NAME
+```
 
 ### Clock
-`timedatectl set-ntp true`
+```
+timedatectl set-ntp true
+```
 
 ### Disk setup
-`lsblk`
-v:=disk
-`cfdisk /dev/v`
-make swap, root partition
-
-efi:=/dev/efi_partition
-root:=/dev/root_partition
-swap:=/dev/swap_partition
+Make root & swap partitions
+```
+cfdisk /dev/disk_to_use
+```
 
 ```
-mkfs.ext4 root
-mkswap swap
-swapon swap
-mount root /mnt 
-mount --mkdir efi /mnt/efi
+mkfs.ext4 /dev/root_partition
+mkswap /dev/swap_partition 
+swapon /dev/swap_partition 
+mount /dev/root_partition /mnt 
+mount --mkdir /dev/efi_partition /mnt/efi
 ```
 
 ### Install system
@@ -56,7 +56,9 @@ hwclock --systohc
 `pacman -Sy neovim`
 
 Edit /etc/locale.gen and uncomment en_US.UTF-8 UTF-8.
+
 Generate locale: `locale-gen`
+
 Create /etc/locale.conf and set LANG: `LANG=en_US.UTF-8`
 
 Edit /etc/hostname, and write name of machine on network
@@ -79,13 +81,16 @@ passwd
 ```
 
 ### Grub
-`pacman -S grub efibootmgr os-prober`
+```
+pacman -S grub efibootmgr os-prober
+```
 Edit /etc/default/grub and uncomment `GRUB_DISABLE_OS_PROBER=false`
 
 Install grub
-`grub-install --target=x86_64-efi --efi-directory=/efi/ --bootloader-id=GRUB`
-
-`grub-mkconfig -o /boot/grub/grub.cfg`
+```
+grub-install --target=x86_64-efi --efi-directory=/efi/ --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+```
 
 
 # Post Install
@@ -169,19 +174,24 @@ Run `bombadil link -p bspwm`
 ### Configure zsh
 
 zsh-autosuggestions
-`git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
+```
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```
 
 Add `zsh-autosuggestions` to plugins list in ~/.zshrc (already done if following dots)
 
 zsh-syntax-highlighting
-`git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
+```
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
 
 Add `zsh-syntax-highlighting` to the end of plugins list (already done if following dots)
 
 Minimal theme
+```
 git clone https://github.com/subnixr/minimal.git  ${ZSH_CUSTOM}/themes/minimal
-
 ln -s ${ZSH_CUSTOM}/themes/minimal/minimal.zsh ${ZSH_CUSTOM}/themes/minimal.zsh-theme
+```
 
 Set ZSH to be the default shell
 `chsh -s $(which zsh)`
@@ -198,10 +208,10 @@ Automatic X11 start should be configured with dotfiles
 
 ### X11 Device configs
 
-Copy files from dotfiles/x11/device/ to /etc/X11/xorg.conf.d/
+Copy files from `dotfiles/x11/device/` to `/etc/X11/xorg.conf.d/`
 
 ### Polybar fonts
-Copy everything from ./packages/polybar-fonts to ~/.local/share/fonts
+Copy everything from `./packages/polybar-fonts` to `~/.local/share/fonts`
 (need to integrate this with AUR later but kinda lazy rn)
 
 ### Configure your screen
