@@ -56,10 +56,8 @@ hwclock --systohc
 `pacman -Sy neovim`
 
 Edit /etc/locale.gen and uncomment en_US.UTF-8 UTF-8.
-```
-locale-gen
-vim /etc/locale.conf
-```
+Generate locale: `locale-gen`
+Create /etc/locale.conf and set LANG: `LANG=en_US.UTF-8`
 
 Edit /etc/hostname, and write name of machine on network
 
@@ -70,6 +68,8 @@ Edit /etc/hosts to look like this
 127.0.1.1	koawa.localdomain	koawa
 ```
 
+where koawa = your hostname
+
 ### User configuration
 Create user, set user passwd, set root passwd
 ```
@@ -79,12 +79,12 @@ passwd
 ```
 
 ### Grub
-```
-pacman -S grub efibootmgr os-prober
-grub-install --target=x86_64-efi --efi-directory=/efi/ --bootloader-id=GRUB
-```
-
+`pacman -S grub efibootmgr os-prober`
 Edit /etc/default/grub and uncomment `GRUB_DISABLE_OS_PROBER=false`
+
+Install grub
+`grub-install --target=x86_64-efi --efi-directory=/efi/ --bootloader-id=GRUB`
+
 `grub-mkconfig -o /boot/grub/grub.cfg`
 
 
@@ -96,7 +96,7 @@ pacman -S sudo
 ln -s /usr/bin/nvim /usr/bin/vi
 ```
 
-Add these two lines in sudoers file
+Add these two lines in sudoers file using `visudo`
 ```
 root ALL=(ALL:ALL) ALL
 neil ALL=(ALL:ALL) ALL
@@ -107,7 +107,7 @@ Edit the faillock config to disable lockout *just personal preference on my desk
 
 ### Networking
 ```
-pacman -S networkmanager network-manager-applet networkmanager-dmenu-git wpa_supplicant
+pacman -S networkmanager  wpa_supplicant
 systemctl enable NetworkManager.service
 ```
 
@@ -160,6 +160,11 @@ VerbosePkgLists
 ParallelDownloads = 5
 ```
 
+### Set up dotfiles
+Clone `https://github.com/asiankoala/dotfiles`
+Run `bombadil install` inside of ~/dotfiles/
+Run `bombadil link -p bspwm`
+
 
 ### Configure zsh
 
@@ -172,6 +177,11 @@ zsh-syntax-highlighting
 `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
 
 Add `zsh-syntax-highlighting` to the end of plugins list (already done if following dots)
+
+Minimal theme
+git clone https://github.com/subnixr/minimal.git  ${ZSH_CUSTOM}/themes/minimal
+
+ln -s ${ZSH_CUSTOM}/themes/minimal/minimal.zsh ${ZSH_CUSTOM}/themes/minimal.zsh-theme
 
 Set ZSH to be the default shell
 `chsh -s $(which zsh)`
@@ -190,6 +200,10 @@ Automatic X11 start should be configured with dotfiles
 
 Copy files from dotfiles/x11/device/ to /etc/X11/xorg.conf.d/
 
+### Polybar fonts
+Copy everything from ./packages/polybar-fonts to ~/.local/share/fonts
+(need to integrate this with AUR later but kinda lazy rn)
+
 ### Configure your screen
 
-Do arandr stuff here
+Use arandr and configure screen variables in `~/dotfiles/vars.toml`

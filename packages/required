@@ -1,5 +1,6 @@
 arandr
 bspwm
+dmenu
 google-chrome
 kitty
 man-db
@@ -17,4 +18,8 @@ polybar
 rofi
 rofi-emoji
 clipster
-picom-jonaburg-fix
+unzip
+ripgrep
+networkmanager-dmenu-git
+network-manager-applet
+toml-bombadil
