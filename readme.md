@@ -142,11 +142,22 @@ yay -S --needed - < ./packages/fonts
 
 ### Configure pacman
 Refer to `/etc/pacman.conf`
-To enable parallel downloads, uncomment the `#ParallelDownloads = 5` line
-To enable multilib, uncomment
+Uncomment the following lines for multilib support
 ```
 [multilib]
 Include = /etc/pacman.d/mirrorlist
+```
+
+Enable these four lines for:
+- colored output
+- pacman animation
+- listing packages in a verbose, tabular format when updating
+- downloading packages in parallel
+```
+Color
+ILoveCandy
+VerbosePkgLists
+ParallelDownloads = 5
 ```
 
 
@@ -174,3 +185,11 @@ ExecStart=-/sbin/agetty -o '-p -f -- \\u' --noclear --autologin neil - $TERM
 ```
 
 Automatic X11 start should be configured with dotfiles
+
+### X11 Device configs
+
+Copy files from dotfiles/x11/device/ to /etc/X11/xorg.conf.d/
+
+### Configure your screen
+
+Do arandr stuff here
