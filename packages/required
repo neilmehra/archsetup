@@ -24,3 +24,5 @@ networkmanager-dmenu-git
 network-manager-applet
 toml-bombadil
 imagemagick
+tree-sitter-cli
+npm

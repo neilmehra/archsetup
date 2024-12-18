@@ -229,3 +229,12 @@ Copy everything from `./packages/polybar-fonts` to `~/.local/share/fonts`
 ### Configure your screen
 
 Use arandr and configure screen variables in `~/dotfiles/vars.toml`
+
+
+
+
+
+
+# TODO
+- thunderbird theme
+- test setup script
