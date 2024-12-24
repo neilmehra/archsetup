@@ -239,6 +239,6 @@ Use arandr and configure screen variables in `~/dotfiles/vars.toml`
 - thunderbird theme
 - test setup script
 - xdg dirs/auto mkdir all dirs
-
-
-ssh-add -k
+- github ssh
+- gtk themes
+- fix fonts being diff
