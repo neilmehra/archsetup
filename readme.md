@@ -238,3 +238,7 @@ Use arandr and configure screen variables in `~/dotfiles/vars.toml`
 # TODO
 - thunderbird theme
 - test setup script
+- xdg dirs/auto mkdir all dirs
+
+
+ssh-add -k
