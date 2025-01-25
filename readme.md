@@ -242,3 +242,9 @@ Use arandr and configure screen variables in `~/dotfiles/vars.toml`
 - github ssh
 - gtk themes
 - fix fonts being diff
+
+https://wiki.archlinux.org/title/DisplayLink
+
+ruby
+rust
+

@@ -1,0 +1,60 @@
+yay -S brightnessctl
+yay -Syu
+yay -S brightnessctl
+yay -Q | grep python-pywal
+yay -Q | grep pywal
+yay -S python-pywal
+yay -S npm
+yay -S --needed - < ./packages/required
+yay -S --needed - < required
+yay -S --needed - < apps
+yay -S --needed - < audio
+yay -S --needed - < required
+yay -S --needed - < fonts
+yay -S rog-control-cente
+yay -S rog-control-center
+yay -R rog-control-center
+yay -S wireshark-qt
+yay -S tree-sitter-cli
+hgr yay
+yay -S git-lfs
+yay -Q |  grep rust
+yay -R rust
+yay -Q | grep openssh
+yay -S gtest
+yay -S git-filter-repo
+yay -Syu git-filter-repo
+yay -Q | grep bluez
+yay -Q | grep noto
+yay -S noto-fonts
+yay -Q | grep noto
+yay -S dbus
+yay -S python-dbus
+yay -S inetutils
+yay -S bitwarden-cli
+yay -S jdk21-openjdk
+yay -S docker-compose
+yay -Syu docker-compose
+yay -Syu docker-compose --no-confirm
+yay -Syu docker-compose --noconfirm
+yay -Syu docker-compose --noconfirm
+yay -S docker
+yay -S bridge-utils
+yay -R bridge-utils
+yay -S ruby
+yay -R ruby
+yay -R ruby rubygems
+yay -S --needed base-devel openssl
+yay -S visual-studio-code-bin
+yay -S --noconfirm visual-studio-code-bin
+yay -S --noconfirm visual-studio-code-bin
+yay -S displaylink
+yay -Q | grep dkms
+yay -S linux-headers dkms
+yay -Syu linux-headers dkms
+yay -Q | grep linux
+yay -Rs displaylink
+yay -S evdi displaylink
+yay -S linux-headers-6.12.9-arch1-1
+yay -S linux-headers-6.12.9-arch1-1
+yay -S linux-headers-6.12.9
