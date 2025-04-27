@@ -231,6 +231,9 @@ Copy everything from `./packages/polybar-fonts` to `~/.local/share/fonts`
 Use arandr and configure screen variables in `~/dotfiles/vars.toml`
 
 
+### Pywal
+
+`wal --theme dotfiles/wal/backup/nia/colors.json`
 
 
 
